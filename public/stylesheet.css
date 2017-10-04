@@ -1,0 +1,188 @@
+body{
+    background:#fff;
+}
+
+/* Items for Guide */
+
+.guide{
+    position:fixed;
+    top:0; bottom:0; left:0; right: 0;
+    width:100%;
+    height:100%;
+    z-index:99999999;
+    margin: absolute;
+}
+
+.guide img{
+    width:100%;
+    height:100%;
+}
+
+/* -------------- */
+
+
+.computation{
+    width:100%;
+    padding:1em;
+    border:2px solid #000;
+    margin-bottom:1em;
+}
+
+.back{
+    position:fixed;
+    bottom:0px;
+    padding:1em;
+    margin:0 auto;
+    z-index:999;
+}
+
+
+.save{
+    width:100%;
+    padding:1em;
+    border:2px solid #000;
+}
+
+.computation textarea{
+    border:2px solid #000;
+    padding:.5em;
+    box-shadow:3px 3px 0 #000;
+    margin:.5em;
+    font-family:"karla";
+    font-size:16px;
+}
+
+textarea{
+    max-width:90%;
+}
+
+input[type=button]{
+    padding:.5em;
+    border:2px solid black;
+    font-weight:bold;
+    text-align:center;
+    box-shadow:2px 2px 0 #000;
+    background:#fff;
+    margin:.5em;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+input[type=button]:hover{
+    background:#000;
+    color:white;
+}
+
+body{font-family:"Apercu Pro";}
+
+#content{
+    margin:auto;
+    width:60%;
+    max-width:700px;
+    padding:1em;
+} 
+
+h1{text-align:center;}
+
+/* Dropbox Storage */
+
+.dbtextstorage{
+    border:2px solid #000;
+    margin:.5em;
+    padding:.5em;
+}
+
+.dbstorage{
+    height:500px;
+    overflow-x:scroll;
+    width:auto;
+}
+
+.dbstorage img{
+    border:2px solid #000;
+    display:inline-block;
+}
+
+
+/* Styling for entry form */
+
+.save input[type=text]{
+    padding:.2em;
+    font-family:"Karla";
+    border:2px solid #000;
+    max-width:80%;
+    margin:.1em;
+}
+
+.save select,.save option{
+    padding:.2em;
+    font-family:"Karla";
+    border:2px solid #000;
+    
+    max-width:80%;
+    margin:.1em;
+}
+
+.save textarea{
+    padding:.2em;
+    font-family:"Karla";
+    border:2px solid #000;
+    max-width:90%;
+    margin:.1em;
+}
+/* Styling for database entries, base format */
+
+.database-entry{
+    padding:.5em;
+    margin:1em;
+    display:block;
+}
+
+.databasemarker h1{
+    margin:0;
+    text-transform:uppercase;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.databasemarker p{
+    font-size:12px;
+    font-family:Karla;
+    margin:0 0 .5em 0;
+}
+
+.database:not(:first-child){
+    margin-bottom:1em;
+}
+
+.database-entry h2{
+    margin:0;
+    border-bottom:1px solid #ccc;
+    font-family:"Rubik";
+    font-size:16px;
+}
+
+.database-entry p{
+    margin: 1px 0 5px 0;
+    font-family:"Karla", sans-serif;
+}
+
+.database-property{
+    display:inline-block;
+    max-width:200px;
+    padding:5px;
+    margin:.2em;
+    border-radius:5px;
+    font-size:9px;
+    color:#1a2b61;
+    font-family:"Karla", sans-serif;
+    font-weight: bold;
+}
+
+.database-entry-coords{background-color:#eacd67;}
+.database-entry-status{background-color:#ea8667;}
+.database-entry-species{background-color:#8bc9e3;}
+.database-entry-visit{background-color:#1a2b61;color:white;text-decoration:underline;}

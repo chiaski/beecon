@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+  <body>
+      
+      <div id="header"></div>
+      <div id="content">
+      
+      <div class="computation">
+          
+          <p>Format:<br />Degree direction(space)round trip time<br /><br /><em>For more inputs, separate by linebreak (enter)</em></p>
+      
+          
+          <textarea name="beevalues" class="beevalues"></textarea>
+          <input type="button" value="compute all entered values" onclick="calcuBeevalues()">
+        
+          <div class="beevaluesoutput">
+          Output is here.
+          </div>
+          
+          <br /><br />
+          
+          <h1>Dropbox Storage Files</h1>
+          <p>Displaying the latest files stored on the database.</p>
+          
+          <div class="dbtextstorage">
+          text should go here ad be replaced
+          </div>
+          <div class="dbstorage">
+          
+          
+          </div>
+          
+      </div>
+          
+    <div class="database">
+    <h1>Database</h1>      
+    
+        <div class="database-entry id-923505">
+        
+        <h2>Entry: 9234205</h2>
+        <p>Lorem ipsum dolor sit amet. If you have a description of the hive, then it would go here &mdash; may be short or lengthy depending on how you wish.</p>
+        <div class="database-entry-coords database-property">Coordinates go here.</div>
+        <div class="database-entry-species database-property">Species goes here.</div>
+        <div class="database-entry-status database-property">Status of the hive goes here.</div>
+        <div class="database-entry-visit database-property">Last visit</div>
+        
+        </div>          
+    </div>
+      
+      
+</div> 
+    
+
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script><script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script src="main.js" type="text/javascript"></script>
+<script src="datastorage.js" type="text/javascript"></script>
+<script src="dropboxdisplay.js" type="text/javascript"></script>
+
+<!--  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+  </body>
+</html> 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <style type="text/css">
+      
+      #map {
+        height: 600px;
+        width:100%;
+        min-width:800px;
+      } 
+      
+  </style>
+  </head>
+  <body>
+      
+      <div id="header"><h1>Map</h1><p></p></div>
+      <div id="content">
+    
+          <div id="map"></div>
+          
+
+        
+          
+        
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script><script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script src="datastorage.js" type="text/javascript"></script>
+<script src="dropboxdisplay.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+
+  
+<script>
+    var rad;
+    var lat;
+    var long;
+    
+    
+    var locations = [];
+    
+    function Report(title, description, lat, lng, radius, species) {
+				this.title = title
+                this.description = description
+                this.lat = lat
+                this.long = long
+                this.radius = radius
+			}
+
+    
+    var EntriesRef = database.ref('entries');
+
+
+    
+      var map;
+    
+    /* function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }*/
+    
+      function initMap() {
+        
+        grabData();
+        console.log(locations);
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
+        });
+
+          infoWidget = new google.maps.InfoWindow()
+
+     
+function grabData() {
+    EntriesRef.on('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var data = childSnapshot.val();
+            rad = data.radius;
+            var temp = data.whereCoord.split(" ");
+            lat = temp[0];
+            long = temp[1];
+            locations.push(new Report(data.title, data.body, lat, long, data.radius, data.species));
+			var latLng = new google.maps.LatLng(lat, long)
+			var marker = new google.maps.Marker({position: latLng, map: map})
+           	
+            var text_format = "<h1>" + data.title + "</h1>" + data.body;
+            //Text
+            google.maps.event.addListener(marker, 'click', function(){
+            infoWidget.close()
+            infoWidget.setContent(text_format)
+            infoWidget.open(map, marker)
+            })
+            //OK!
+            //alert(lat +" "+ long +" "+data.radius);
+        });
+    });
+}
+          
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbb157CrNTXlzXNd-rYHsaw8Ce7urSRII&callback=initMap">
+    </script>
+    
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+  </body>
+</html> 

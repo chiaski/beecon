@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Beecon: Locating A Hive</title>
+      
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <link rel="stylesheet" href="portal.css" type="text/css">
+  <link rel="stylesheet" href="entries.css" type="text/css">
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+      
+<div class="guide">
+      <img src="http://i.imgur.com/rWbDFND.png" />
+</div>
+      
+<script type="text/javascript">
+$( ".guide" ).click(function() 
+  $( ".guide" ).fadeOut( "fast" );
+    console.log("Clicked!");
+});
+</script>
+      
+<div class="back" id="links">
+        <a href="portal.html">Back to Portal</a>
+</div>
+      
+      <!-- Entry screens !-->
+<div class="enterScreen">
+    <div id="calculation">
+        <center><p>First, input the direction in degrees, space, input the round trip time. <br />If you want to add another entry, enter again in a new line.</p>
+        <textarea name="beevalues" class="beevalues"></textarea>
+          <input href="#maparea" type="button" value="Compute est. hive location" onclick="calcuBeevalues();$('.enterScreen').fadeToggle();">
+          </center>
+    </div>
+</div>
+      
+      
+      <div id="cover">
+          <div class="topStillLayer">
+          <h1>LOCATE A HIVE</h1></div>
+          <div class="topMoveLayer"></div>
+      </div>
+      
+<div class="container">
+    <div class="box" style="height:150px"></div>
+    <div class="box" id="guide">
+        <center>
+        <img src="img/guide.png" /><br />
+            Your hive location: <span class="valueHiveLocation">-33.7738192,151.1104665</span><br />MACQUARIE UNIVERSITY
+        </center>
+    </div>
+    
+    <div class="box" style="margin-bottom:1em;">
+    <div class="dbcontainer">
+          <div class="dbstorage"></div>
+            
+            <center>
+                <p>Enter data once you have observed the footage.</p>
+                <a  onclick="$('#calculation').fadeToggle();$('.enterScreen').fadeToggle();$(this).fadeToggle();">Insert entry</a>
+        </center>
+    </div> 
+    </div>
+    
+    <div class="box" style="min-height:800px;left:0;width:100%;">
+    <a name="mapplace"></a>
+    <div id="map"></div>
+    </div>
+  
+    
+    <div class="box" id="data" style="min-height:10px;height:auto;">
+        
+            <div class="data base">    
+    
+            </div>
+        
+    </div>
+    <div class="box" id="links">
+        <center>
+        <a href="entryunknown.html">Locate Hive</a>
+        <a href="entryknown.html">Enter Hive</a>
+        </center>
+          <div class="beevaluesoutput"></div>
+    </div>
+    
+    <div class="box" id="footer" style="min-height:100px;">
+    Beecon is developed with &hearts; by the De La Salle Santiago Zobel Robotics Team
+    </div>
+    
+</div>          
+        
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script><script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script src="datastorage.js" type="text/javascript"></script>
+<script src="dropboxdisplay.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+
+      
+<script>
+    var rad;
+    var lat;
+    var long;
+    
+    
+    var locations = [];
+    
+    
+    //var hivecoords = $('.valueHiveLocation').val();
+    
+    //hivecoords = hivecoords.split(" ");
+    //alert(hivecoords);
+    
+    /*var tempLat = hivecoords[0];
+    var tempLong = hivecoords[1];
+    alert(hivecoords[0], hivecoords[1]);*/
+    
+    function Report(title, description, lat, lng, radius, species) {
+				this.title = title
+                this.description = description
+                this.lat = lat
+                this.long = long
+                this.radius = radius
+			}
+
+    
+    var EntriesRef = database.ref('entries');
+
+
+    
+      var map;
+    
+    /* function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }*/
+    
+      function initMap() {
+        var coord;
+        grabData();
+        console.log(locations);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: new google.maps.LatLng(-33.7738192,151.1104665),
+          mapTypeId: 'hybrid',
+          disableDefaultUI: true
+        });
+          
+        LatLng = new google.maps.LatLng(-33.7738192,151.1104665);
+          
+        var marker = new google.maps.Marker({
+          position: LatLng,
+          map: map,
+          icon:'img/markerStation.png'
+        });
+        
+          
+        /*var marker = new google.maps.Marker({
+            position:LatLng,
+            map:map,
+            title: "Heck!"
+        });*/
+        
+        infoWidget = new google.maps.InfoWindow();
+      }
+
+function grabData() {
+    var coordRef = database.ref('coords');    
+    coordRef.on('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var data = childSnapshot.val();
+        coord = data.coord;
+        coord = coord.split(" ");
+        map.setCenter(new google.maps.LatLng(coord[0], coord[1]));
+    });
+    });
+    
+    EntriesRef.on('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var data = childSnapshot.val();
+            rad = data.radius;
+            var coord = data.whereCoord;
+            coord = coord.split(" ");
+            locations.push(new Report(data.title, data.body, coord[0], coord[1], data.radius, data.species));
+			var latLng = new google.maps.LatLng(coord[0], coord[1])
+			var marker = new google.maps.Marker({position: latLng, icon:'img/markerHive.png', map: map})
+           	
+            var text_format = "<div class='databasemarker'><h1 style='margin:0;'>" + data.title + "</h1><p>" + data.body +
+            "</p><br /><div class='database-entry-coords database-property'>" + data.whereCoord + "</div>" +
+            "<div class='database-entry-coords database-property'>" + data.radius + " radius</div><br />" +
+            "<div class='database-entry-species database-property'>" + data.species + "</div>" +
+            "<div class='database-entry-status database-property'>" + data.status + "</div>" +
+            "<div class='database-entry-visit database-property'>" + data.lastvisit + "</div></div>";
+            //Text
+            google.maps.event.addListener(marker, 'click', function(){
+            infoWidget.close()
+            infoWidget.setContent(text_format)
+            infoWidget.open(map, marker)
+            })
+            //OK!
+            //alert(lat +" "+ long +" "+data.radius);
+        });
+    });
+};
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbb157CrNTXlzXNd-rYHsaw8Ce7urSRII&callback=initMap">
+    </script>
+  </body>
+</html> 

@@ -1,0 +1,190 @@
+#map{
+    margin:auto;
+    width:100%;
+    height:100%;
+    float:clear;
+    left:0;
+    position:relative;
+    top:0;
+    float:left;
+}
+
+#calculation textarea{
+    border-radius:20px;
+    box-shadow:0 0 10px #ccc;
+    font-family:"Apercu Pro";
+    padding:1em;
+    border:transparent;
+}
+
+#calculation input[type=button]{
+    box-shadow:0 0 5px #ccc;
+    border:0;
+    padding:.5em;
+    font-family: "Rubik";
+    text-transform: uppercase;
+    font-size:18px;
+    border-bottom:2px solid black;
+    margin:1em;
+    letter-spacing:1px;
+    background:transparent;
+}
+
+#calculation input[type=button]:hover{
+    color:#fff;
+}
+
+.dbcontainer a{
+    text-decoration: none;
+    font-family:"Rubik";
+    font-weight: bold;
+    text-align: center;
+    color:#000;
+    font-size:24px;
+}
+
+#calculation{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width:50%;
+    max-width:600px;
+    margin:auto;
+    padding:1em;
+    display:none;
+}
+
+#calculation p{
+    font-size:24px;
+}
+
+#calculation textarea{
+    max-width:50%;
+    width:50%;
+    font-size:18px;
+}
+
+
+.enterScreen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:5;
+    top:0; left:0;
+    display:none;
+    background:#f2cd62;
+    padding:1em;
+}
+
+.dbcontainer a{
+    background-image:url('img/linkHighlightTall.png');
+}
+
+
+
+.beevalues{
+    display:block;
+    width:50%;
+    height:100px;
+}
+
+.beevaluesoutput{
+    padding:1em;
+    
+}
+
+
+/* Known Hive */
+
+#maparea{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:5;
+    top:0; left:0;
+    background:#f2cd62;
+    padding:1em;
+    display:none;
+}
+
+.withinmaparea{
+    height:100%;
+}
+
+#maparea .savecoord{
+    position:absolute;
+    bottom:0;
+    padding:1em;
+    margin-bottom:2em;
+    z-index:9999;
+    margin:auto;
+    width:100%;
+}
+
+
+#maparea #map{
+    height:80% !important;
+    padding:1em;
+}
+
+#maparea input[type=button]{
+    z-index:999;
+    background:#fff;
+    font-family:"Apercu Pro";
+    font-size:32px;
+    box-shadow:none;
+}
+
+#maparea input[type=button]:hover{
+    color:#fff;
+    background:#000;
+}
+
+.hivecalcu{
+    width:80%;
+    margin:auto;
+    padding:1em;
+}
+
+.hivecalcu input[type=button]{
+    border:none;
+    font-family:"Rubik";
+    font-size:24px;
+    box-shadow:none;
+    background-image:url('img/linkHighligh.png');
+}
+
+.hivecalcu input[type=button]:hover{
+    background-image:url('img/linkHighligh.png');
+    background-color:transparent;
+    color:antiquewhite;
+}
+
+.hivecalcu label{
+    font-family:"Rubik";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing:1px;
+    font-size:18px;
+}
+
+.hivecalcu option, .hivecalcu select{
+    font-size:22px;
+    font-family:"Apercu Pro";
+    border-bottom:2px solid #000;
+}
+
+.hivecalcu input[type=text]{
+    border:transparent;
+    font-size:22px;
+    font-family:"Apercu Pro";
+    border-bottom:2px solid #000;
+}
+
+.hivecalcu textarea{
+    width:50%;
+    height:100px;
+    font-family:"Apercu Pro";
+    font-size:18px;
+    font-weight:100;
+}

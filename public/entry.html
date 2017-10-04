@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+  <body>
+      
+      <div id="header"><h1>Input</h1></div>
+      <div id="content">
+      
+          <div class="computation">
+          <h2>Hive finder</h2>
+          <p>For usage after viewing the capture feed; input the observed directionals and round trip time to attain the <em>estimated hive locations</em></p>
+          <p>Format:<br />Degree direction(space)round trip time<br /><br /><em>For more inputs, separate by linebreak (enter)</em></p>
+      
+          <center>
+          <textarea name="beevalues" class="beevalues"></textarea>
+          <input type="button" value="Compute est. hive location" onclick="calcuBeevalues()">
+        
+          <div class="beevaluesoutput">
+          Output is here.
+          </div>
+              
+            
+          <input type="button" value="Save values and input" onclick="saveBeevalues()">
+          </center>
+          <br /><br />
+          </div> 
+          
+          <div class="save">
+          <h2>Hivebase Entry</h2>
+              <p>Input data according to computations <strong>or</strong> directly input values.</p>
+          
+              <label>Entry title:</label> <input type="text" class="valueTitle" value="Words" name="valueTitle" />
+              <br />
+              <label>Hive status:</label> <select name="valueStatus" class="valueStatus">
+              <option value="OK">OK</option>
+              <option value="For inspection">For inspection</option>
+              <option value="Recently swarmed">Recently swarmed</option>
+              <option value="For splitting">For splitting</option>
+              <option value="Missing">Missing/Poached/Extracted</option>
+              </select>
+              <br />
+              <label>Hive species:</label> <select name="valueSpecies" class="valueSpecies">
+              <option value="Stingless bee">Stingless  bee</option>
+              <option value="European Honeybee">European Honeybee</option>
+              <option value="Giant Honeybee">Giant Honeybee</option>
+              <option value="Dwarf Honeybee">Dwarf Honeybee</option>
+              <option value="Eastern Honeybee">Eastern Honeybee</option>
+              </select>
+              <br />
+              
+              <label>Last visit:</label> <input type="text" class="valueVisit" name="valueVisit"><br />
+              
+              <label>Hive coordinates: </label> <input type="text" name="valueHiveCoords"  class="valueHiveCoords" placeholder="Hive coordinates"><br />
+              <label>Hive radius:</label> <input type="text" class="valueRadius" name="valueRadius"><br />
+              <br /><br />
+              
+              <label>Description:</label><br />
+              <textarea name="valueDescription" class="valueDescription"></textarea>
+              <br />
+              
+              
+          <input type="button" value="Submit entry" onclick="saveEntry();">
+              
+          </div>
+          
+
+          
+        
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script><script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script src="datastorage.js" type="text/javascript"></script>
+<script src="dropboxdisplay.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+
+
+<!--  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+  </body>
+</html> 

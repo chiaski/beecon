@@ -1,0 +1,116 @@
+
+*, *::before, *::after { box-sizing: inherit; }
+html { box-sizing: border-box; }
+
+body{
+    background:#fff;
+}
+
+#title{
+    font-family:"HouschkaRoundedAlt 12 Regular";
+    position:absolute;
+    width:30%;
+    max-width:500px;
+}
+
+#title img{
+    max-width:500px;
+}
+
+.container{
+    position:absolute;
+    max-width:100%;
+    min-width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+}
+
+.box{
+    display:block;
+    width:100%;
+    top:0px;
+    left:0px;
+}
+
+
+.first{
+    position: absolute;
+    width:600px;
+    height:500px;
+    margin:auto;
+    top: 0; bottom: 0; left: 0; right: 0;
+    padding:.5em;
+    font-family:"Apercu Pro";
+}
+
+h3{
+    font-size:32px;
+    text-align: center; 
+    color:#1a2b61;
+    margin: 0;
+}
+
+.stretchbelow{
+    position:absolute;
+    width:100%;
+    left:0;
+    height:235px;
+    background: transparent url(img/bottom.png);
+    bottom:0;
+}
+
+.first a{
+    width:300px;
+    display:inline-block;
+    background:#fbdd71;
+    padding:.5em;
+    border-radius:20px;
+    margin:1em;
+    font-size:26px;
+    font-family:"Apercu Pro";
+    text-decoration: none;
+    font-weight:bold;
+    color:#1a2b63;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+.first a:hover{
+    color:#fbdd71;
+    background:#1a2b63;
+}
+
+.shapes {
+position:absolute;
+  background:transparent url(img/overlay.png) repeat top center;
+  z-index:0;
+  opacity:0.8;
+  -moz-animation:shapes 400s linear infinite;
+  -ms-animation:shapes 400s linear infinite;
+  -o-animation:shapes 400s linear infinite;
+  -webkit-animation:shapes 400s linear infinite;
+  animation:shapes 400s linear infinite;
+  width:100%;height:100%;
+    top:0px;left:0px;
+}
+
+@keyframes shapes {
+    from {background-position:0 0;}
+    to {background-position:0 -10000px;}
+}
+@-webkit-keyframes shapes {
+    from {background-position:0 0;}
+    to {background-position:0 -10000px;}
+}
+@-moz-keyframes shapes {
+    from {background-position:0 0;}
+    to {background-position:0 -10000px;}
+}
+@-ms-keyframes shapes {
+    from {background-position: 0;}
+    to {background-position:0 -10000px;}
+}
